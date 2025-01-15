@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    font-family: "Poppins", serif;
+}
+
+header {
+    color: #3b902e;
+    text-align: center;
+}
+
+
+section {
+    /* background-color: red; */
+    height: 50vh;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+
+}
+
+form {
+    width: 60%;
+    height: 40vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+/* 
+.insidesexo {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.insidesexo input {
+    width: 25px;
+} */
+
+
+.insidesexo {
+    display: flex;
+
+}
+
+.insidesexo input {
+    width: 25px;
+    margin-right: 1vw;
+}
+
+.forinputs {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.forinputs label {
+    margin-bottom: 2px;
+    font-weight: 600;
+    font-size: 14pt;
+}
+
+.forinputs input {
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+.forinputs input:focus {
+    outline: none;
+    background-color: rgb(244, 244, 244);
+}
+
+
+
+#submit {
+    background-color: #3b902e;
+    
+    color: white;
+    font-size: 12pt;
+
+    border: none;
+
+    height: 5vh;
+}
+
+#submit:hover {
+    background-color: #287e1c;
+    cursor: pointer;
+}
+
+span {
+    color: #3b902e;
+    font-weight: 600;
+}
+
+.resultado {
+    height: 10vh;
+    font-size: large;
+}
