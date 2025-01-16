@@ -54,7 +54,6 @@ if (isset($_POST['confirm'])) {
     }
 
     header("Location: ./index.php");
-    $teste;
 }
 
 
