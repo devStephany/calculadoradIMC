@@ -1,48 +1,60 @@
-<?php
+<?php 
+
 session_start();
 
-if (isset($_POST["confirm"])) {
-    $sexo = isset($_POST["sexo"]) ? $_POST["sexo"] : null;
-    $peso = isset($_POST["peso"]) ? floatval($_POST["peso"]) : 0;
-    $altura = isset($_POST["altura"]) ? floatval($_POST["altura"]) : 0;
+$altura = $_POST['altura'];
+$peso = $_POST['peso'];
+$sexo = $_POST['sexo'];
+$resultado;
+$imc = $peso / ($altura * $altura);
 
-    if ($peso > 0 && $altura > 0) {
-        $imc = $peso / ($altura ** 2);
+if (isset($_POST['confirm'])) {
+    
+    if ($altura > 0 && $peso > 0 && isset($sexo)) {
 
-        if ($sexo === "Feminino") {
-            if ($imc < 19.1) {
-                $resultado = "Abaixo do peso! Seu IMC equivale a <span>{$imc}</span>";
-            } elseif ($imc <= 25.8) {
-                $resultado = "Peso normal! Seu IMC equivale a <span>{$imc}</span>";
-            } elseif ($imc <= 27.3) {
-                $resultado = "Pouco acima do peso! Seu IMC equivale a <span>{$imc}</span>";
-            } elseif ($imc <= 32.3) {
-                $resultado = "Acima do peso! Seu IMC equivale a <span>{$imc}</span>";
-            } else {
-                $resultado = "Obesidade! Seu IMC equivale a <span>{$imc}</span>";
-            }
-        } elseif ($sexo === "Masculino") {
-            if ($imc < 20.7) {
-                $resultado = "Abaixo do peso! Seu IMC equivale a <span>{$imc}</span>";
-            } elseif ($imc <= 26.4) {
-                $resultado = "Peso normal! Seu IMC equivale a <span>{$imc}</span>";
-            } elseif ($imc <= 27.8) {
-                $resultado = "Pouco acima do peso! Seu IMC equivale a <span>{$imc}</span>";
-            } elseif ($imc <= 31.1) {
-                $resultado = "Acima do peso! Seu IMC equivale a <span>{$imc}</span>";
-            } else {
-                $resultado = "Obesidade! Seu IMC equivale a <span>{$imc}</span>";
-            }
+        //homens
+        if ($imc < 20.7) {
+            $resultado = "Abaixo do peso";
+
+        } elseif ($imc >= 20.7 && $imc < 26.4) {
+            $resultado = "Peso normal";
+
+        } elseif ($imc >= 26.4 && $imc < 27.8) {
+            $resultado = "Sobrepeso";
+
+        } elseif ($imc >= 27.8 && $imc < 31.1) {
+            $resultado = "Obesidade grau I";
+
         } else {
-            $resultado = "Sexo não informado!";
+            $resultado = "Obesidade grau II ou maior";
         }
 
-        $_SESSION["resultado"] = "<section class='resultado'><p class='resultado'>{$resultado}</p></section>";
-    } else {
-        $_SESSION["resultado"] = "<p class='resultado'>Erro: Altura e peso devem ser válidos!</p>";
+        //mulheres
+        if ($imc < 19.1) {
+            $resultado = "Abaixo do peso";
+
+        } elseif ($imc >= 19.1 && $imc < 25.8) {
+            $resultado = "Peso normal";
+
+        } elseif ($imc >= 25.8 && $imc < 27.3) {
+            $resultado = "Sobrepeso";
+
+        } elseif ($imc >= 27.3 && $imc < 32.3) {
+            $resultado = "Obesidade grau I";
+
+        } else {
+            $resultado = "Obesidade grau II ou maior";
+        }
+
+        $imc = round($imc);
+
+        $_SESSION["resultado"] = "<section class='resultado'><p class='resultado'>{$resultado} seu IMC equivale a <span>{$imc}</span></p></section>";
+
+
     }
 
     header("Location: ./index.php");
-    exit;
 }
+
+
 ?>

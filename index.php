@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calculadora IMC</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -50,14 +50,14 @@
 
     </section>
 
-    <?php
-        if (isset($_SESSION["resultado"])) {
+    <?php 
+    
+    if (isset($_SESSION["resultado"])){
+        echo $_SESSION["resultado"];
+        unset($_SESSION["resultado"]);
+    }
 
-            echo $_SESSION["resultado"];
-            unset($_SESSION["resultado"]); 
-        }
     ?>
-
 
     
     
